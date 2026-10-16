@@ -79,8 +79,7 @@ INSERT INTO inscricao (id_inscricao, id_participante, id_turma, situacao) VALUES
 (9, 5, 2, 'Concluído');
 
 -- consultas, clique em uma consulta por vez
-
--- Consulta 1: todos os participantes cadastrados
+-- todos os participantes cadastrados
 
 SELECT * FROM participante;
 
