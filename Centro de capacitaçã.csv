@@ -116,7 +116,7 @@ SELECT COUNT(DISTINCT id_participante) AS participantes_concluidos
 FROM inscricao
 WHERE situacao = 'Concluído';
 
---urso com a maior quantidade de inscrições
+--curso com a maior quantidade de inscrições
 
 SELECT c.nome AS curso,
        COUNT(i.id_inscricao) AS quantidade_de_inscricoes
