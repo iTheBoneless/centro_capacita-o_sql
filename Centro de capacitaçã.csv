@@ -1,4 +1,4 @@
--- atv final - Centro de capacitação profissional
+-- Centro de capacitação profissional
 
 PRAGMA foreign_keys = ON;
 
@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS turma;
 DROP TABLE IF EXISTS curso;
 DROP TABLE IF EXISTS participante;
 
---parte 4
+-- criação de tabelas
 
 CREATE TABLE participante (
     id_participante INT          NOT NULL PRIMARY KEY,
@@ -78,21 +78,21 @@ INSERT INTO inscricao (id_inscricao, id_participante, id_turma, situacao) VALUES
 (8, 3, 4, 'Inscrito'),
 (9, 5, 2, 'Concluído');
 
--- parte 6 - consultas, clique em uma consulta por vez
+-- consultas, clique em uma consulta por vez
 
 -- Consulta 1: todos os participantes cadastrados
 
 SELECT * FROM participante;
 
--- Consulta 2: apenas participantes de Recife
+--apenas participantes de Recife
 
 SELECT * FROM participante WHERE cidade = 'Recife';
 
--- Consulta 3: cursos com carga horária igual ou superior a 20 horas
+--cursos com carga horária igual ou superior a 20 horas
 
 SELECT * FROM curso WHERE carga_horaria >= 15;
 
--- Consulta 4: participante, curso e situação da inscrição
+--participante, curso e situação da inscrição
 
 SELECT p.nome     AS participante,
        c.nome     AS curso,
@@ -102,7 +102,7 @@ JOIN participante p ON p.id_participante = i.id_participante
 JOIN turma t        ON t.id_turma        = i.id_turma
 JOIN curso c        ON c.id_curso        = t.id_curso;
 
--- Consulta 5: quantidade de inscrições por curso
+--quantidade de inscrições por curso
 
 SELECT c.nome AS curso,
        COUNT(i.id_inscricao) AS quantidade_de_inscricoes
@@ -111,13 +111,13 @@ LEFT JOIN turma t     ON t.id_curso = c.id_curso
 LEFT JOIN inscricao i ON i.id_turma = t.id_turma
 GROUP BY c.id_curso, c.nome;
 
--- Consulta 6: participantes com inscrição como concluido
+--participantes com inscrição como concluido
 
 SELECT COUNT(DISTINCT id_participante) AS participantes_concluidos
 FROM inscricao
 WHERE situacao = 'Concluído';
 
--- Consulta 7: curso com a maior quantidade de inscrições
+--urso com a maior quantidade de inscrições
 
 SELECT c.nome AS curso,
        COUNT(i.id_inscricao) AS quantidade_de_inscricoes
@@ -128,7 +128,7 @@ GROUP BY c.id_curso, c.nome
 ORDER BY quantidade_de_inscricoes DESC, c.nome
 LIMIT 1;
 
--- parte 7 - apoio
+--apoio
 -- Cidade com mais participantes cadastrados
 
 SELECT cidade, COUNT(*) AS quantidade
